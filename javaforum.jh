@@ -1,0 +1,56 @@
+
+entity Forum {
+	name String required
+    slogan String
+    logoUri String
+}
+
+entity Area {
+	name String required
+    subtitle String
+    logoUri String
+    order Integer
+}
+
+entity Section {
+	name String required
+    subtitle String
+    logoUri String
+    order Integer
+}
+
+entity Thread {
+	name String required
+    subtitle String
+    creation Timestamp
+}
+
+entity Post {
+	name String
+    text String required
+    creation Timestamp
+}
+
+relationship OneToOne {
+	Post{oldVersion} to Post{newVersion}
+}
+
+relationship ManyToOne {
+	Post{author} to User{threads}
+	Post{thread} to Thread{posts}
+    Thread{section} to Section{threads}
+    Section{parentSection} to Section{children}
+    Section{area} to Area{sections}
+    Area{forum} to Forum{areas}
+}
+
+// Set pagination options
+paginate JobHistory, Employee with infinite-scroll
+paginate Job with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Employee, Job
+// Set an angular suffix
+angularSuffix * with mySuffix
