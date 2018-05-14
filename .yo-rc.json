@@ -62,7 +62,7 @@
       "vi"
     ],
     "clientFramework": "angularX",
-    "jhipsterVersion": "4.14.3",
+    "jhipsterVersion": "4.14.4",
     "packageFolder": "io/javaforumcms/core",
     "jwtSecretKey": "e9ee2da5f7c65e1ea0c5ffb1013e140c5778ceec",
     "jhiPrefix": "jhi",
